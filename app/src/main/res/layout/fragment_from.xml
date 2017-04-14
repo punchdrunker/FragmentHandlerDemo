@@ -9,9 +9,15 @@
     tools:context=".MyActivity$PlaceholderFragment">
 
     <Button
-        android:id="@+id/button"
-        android:text="@string/replace_button"
+        android:id="@+id/button1"
+        android:text="@string/replace_button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <Button
+        android:id="@+id/button2"
+        android:text="@string/replace_button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/button1"/>
 </RelativeLayout>

@@ -2,7 +2,8 @@
 <resources>
 
     <string name="app_name">FragmentHandlerDemo</string>
-    <string name="replace_button">画面遷移</string>
+    <string name="replace_button1">より良い画面遷移</string>
+    <string name="replace_button2">無思慮な画面遷移</string>
     <string name="popbackstack_button">戻る</string>
     <string name="action_settings">Settings</string>
 

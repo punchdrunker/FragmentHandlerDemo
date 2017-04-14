@@ -1,14 +1,9 @@
 
 package com.example.nein37.fragmenthandlerdemo;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.os.Message;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.app.Fragment;
 
 public abstract class BaseHandlerFragment extends Fragment {
 

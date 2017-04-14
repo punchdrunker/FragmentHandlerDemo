@@ -1,10 +1,11 @@
 
 package com.example.nein37.fragmenthandlerdemo;
 
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,15 +26,15 @@ public class FromFragment extends BaseHandlerFragment {
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_from, container, false);
 
-        Button button = (Button) rootView.findViewById(R.id.button);
+        Button button = (Button) rootView.findViewById(R.id.button1);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 2秒後に画面遷移を行う
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        // このタイミングでFragment操作を行うと落ちる
+                        Log.d("LIFECYCLE", "button1 starts commiting fragment");
+
                         Bundle bundle = new Bundle();
                         bundle.putString(ToFragment.BUNDLE_TOAST_TEXT,"hogehogehogehoge");
                         sendMessage(WHAT_REPLACE_FRAGMENT, bundle);
@@ -42,6 +43,26 @@ public class FromFragment extends BaseHandlerFragment {
             }
         });
 
+        Button button2 = (Button) rootView.findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // button2を押した直後にアプリがバックグラウンドに回ると IllegalStateException
+                        Log.d("LIFECYCLE", "button2 starts commiting fragment");
+                        Bundle bundle = new Bundle();
+                        bundle.putString(ToFragment.BUNDLE_TOAST_TEXT,"hogehogehogehoge");
+                        ToFragment toFragment = new ToFragment();
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.replace(getId(), toFragment);
+                        ft.addToBackStack("hoge");
+                        ft.commit();
+                    }
+                }, 2000);
+            }
+        });
         return rootView;
     }
 

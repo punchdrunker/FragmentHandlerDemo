@@ -1,19 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 'Google Inc.:Google APIs:14'
-    buildToolsVersion "20.0.0"
+    compileSdkVersion 24
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "com.example.nein37.fragmenthandlerdemo"
-        minSdkVersion 14
-        targetSdkVersion 20
+        minSdkVersion 19
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
     }
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -21,4 +21,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:support-v4:24.2.1'
+    compile 'com.android.support:appcompat-v7:24.2.1'
+
 }

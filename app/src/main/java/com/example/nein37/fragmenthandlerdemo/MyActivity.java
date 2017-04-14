@@ -1,20 +1,23 @@
 package com.example.nein37.fragmenthandlerdemo;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 
-public class MyActivity extends Activity {
+public class MyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.d("LIFECYLE", "onCreate");
         setContentView(R.layout.activity_my);
         if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
+              getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new FromFragment())
                     .commit();
         }
@@ -30,6 +33,24 @@ public class MyActivity extends Activity {
                 Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("LIFECYLE", "onResume");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d("LIFECYLE", "onPause");
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        Log.d("LIFECYCLE", "onSaveInstanceState");
+
+        super.onSaveInstanceState(outState);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

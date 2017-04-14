@@ -1,5 +1,17 @@
-.gradle
-/local.properties
-/.idea/workspace.xml
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Mac OS .DS_Store file
 .DS_Store
-/build
+
+# Intellij project files
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Android Studio files
+*/build/
+build/
+gradle.properties
+.gradle/
